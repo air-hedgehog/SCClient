@@ -17,7 +17,7 @@ android {
     buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "com.akimchenko.antony.scclient"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -43,6 +43,7 @@ dependencies {
     compile 'com.android.support:support-v13:26.+'
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.github.vpaliyX:SoundCloud-API:v1.2.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"

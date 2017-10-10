@@ -30,7 +30,8 @@ class MainFragment : Fragment() {
         val random = Random()
         val list: ArrayList<ListItem> = ArrayList<ListItem>()
         for (x in 1..50) {
-            list.add(ListItem(random.nextInt().toString(), ContextCompat.getColor(activity, if (x % 2 == 0) R.color.colorAccent else R.color.colorPrimaryDark)))
+            if (x == 2) list.add(ListItem(random.nextInt().toString(), ContextCompat.getColor(activity, R.color.colorAccent)))
+            list.add(ListItem(random.nextInt().toString(), ContextCompat.getColor(activity, if (x % 2 == 0) R.color.colorPrimaryDark else R.color.colorPrimary)))
         }
         return list
     }
@@ -76,6 +77,7 @@ class MainFragment : Fragment() {
     }
 
     private class ListItem(title: String, backgroundColor: Int) {
+        //encaplsulated A.F.
         private var title: String? = title
         private var backgroundColor: Int? = backgroundColor
 
