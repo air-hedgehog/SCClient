@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.akimchenko.antony.scclient.R
+import jp.wasabeef.blurry.Blurry
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import kotlinx.android.synthetic.main.item_random.view.*
 import java.util.*
@@ -26,11 +27,17 @@ class MainFragment : Fragment() {
         return view
     }
 
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view?.post({ Blurry.with(activity).radius(25).sampling(2).onto(view.toolbar) })
+
+    }
+
     private fun get100Items(): ArrayList<ListItem> {
         val random = Random()
         val list: ArrayList<ListItem> = ArrayList<ListItem>()
         for (x in 1..50) {
-            if (x == 2) list.add(ListItem(random.nextInt().toString(), ContextCompat.getColor(activity, R.color.colorAccent)))
+            if (x == 5) list.add(ListItem(random.nextInt().toString(), ContextCompat.getColor(activity, R.color.colorAccent)))
             list.add(ListItem(random.nextInt().toString(), ContextCompat.getColor(activity, if (x % 2 == 0) R.color.colorPrimaryDark else R.color.colorPrimary)))
         }
         return list
@@ -52,10 +59,19 @@ class MainFragment : Fragment() {
         fun inflate(resourceID: Int, viewGroup: ViewGroup): View =
                 LayoutInflater.from(context).inflate(resourceID, viewGroup, false)
 
-        class RandomViewHolder(itemView: View?, val items: ArrayList<ListItem>) : ViewHolder(itemView) {
+        class RandomViewHolder(context: Context, itemView: View?, val items: ArrayList<ListItem>) : ViewHolder(itemView) {
+
+            /*init {
+                itemView?.setOnClickListener({
+                    val transparentDialog = TransparentDialog()
+                    //transparentDialog.dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    transparentDialog.show((context as MainActivity).fragmentManager, transparentDialog.tag)
+                })
+            }
+*/
             override fun updateUI(position: Int) {
-                this.itemView.item_text_view.text = items[position].getTitle()
-                this.itemView.setBackgroundColor(items[position].getBackgroundColor()!!)
+                itemView.item_text_view.text = items[position].getTitle()
+                itemView.setBackgroundColor(items[position].getBackgroundColor()!!)
 
             }
         }
@@ -66,8 +82,8 @@ class MainFragment : Fragment() {
 
         override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
             when (viewType) {
-                ITEM_TYPE_RANDOM -> return RandomViewHolder(inflate(R.layout.item_random, parent!!), items)
-                else -> return RandomViewHolder(inflate(R.layout.item_random, parent!!), items)
+                ITEM_TYPE_RANDOM -> return RandomViewHolder(context, inflate(R.layout.item_random, parent!!), items)
+                else -> return RandomViewHolder(context, inflate(R.layout.item_random, parent!!), items)
             }
         }
 
