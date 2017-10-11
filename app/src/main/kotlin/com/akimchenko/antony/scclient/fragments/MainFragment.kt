@@ -24,13 +24,8 @@ class MainFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view: View = inflater!!.inflate(R.layout.fragment_main, null)
         setRecycler(view.fragment_main_recycler)
+        Blurry.with(activity).radius(5).sampling(10).onto(view.toolbar)
         return view
-    }
-
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        view?.post({ Blurry.with(activity).radius(25).sampling(2).onto(view.toolbar) })
-
     }
 
     private fun get100Items(): ArrayList<ListItem> {

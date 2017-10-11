@@ -4,17 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/colorAccent"/>
-
     <android.support.v7.widget.RecyclerView
         android:paddingTop="56dp"
         android:clipToPadding="false"
         android:id="@+id/fragment_main_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/transparent_backgroudColor"/>
 
 </RelativeLayout>
