@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import blurUtils.ImageUtils
+import blurUtils.ScrollableImageView
 import com.akimchenko.antony.scclient.MainActivity
 import com.akimchenko.antony.scclient.R
 import dialogs.TransparentDialog
@@ -25,7 +27,9 @@ class MainFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view: View = inflater!!.inflate(R.layout.fragment_main, null)
         setRecycler(view.fragment_main_recycler)
-
+        val blurredToolbar: ScrollableImageView = view.blurred_toolbar
+        val screenWidth: Int = ImageUtils.getScreenWidth(activity)
+        blurredToolbar.setScreenWidth(screenWidth)
         return view
     }
 

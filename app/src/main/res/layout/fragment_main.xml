@@ -11,9 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <android.support.v7.widget.Toolbar
+    <blurUtils.ScrollableImageView
+        android:id="@+id/blurred_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp" />
+
+    <!--<android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@drawable/blur_back"/>
+        android:background="@drawable/blur_back"/>-->
 
 </RelativeLayout>
