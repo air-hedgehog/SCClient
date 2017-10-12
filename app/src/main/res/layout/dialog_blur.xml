@@ -3,29 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <!--<com.wonderkiln.blurkit.BlurLayout
+        xmlns:blurkit="http://schemas.android.com/apk/res-auto"
+        android:layout_alignTop="@+id/text_view"
+        android:layout_alignBottom="@+id/my_cancel_button"
         android:id="@+id/dialog_blur_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        blurkit:blk_blurRadius="12"
+        blurkit:blk_downscaleFactor="0.12"
+        blurkit:blk_fps="0">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:gravity="center"
-            android:text="Some text on blurred background"
-            android:textColor="@color/colorAccent"
-            android:textSize="24sp" />
+    </com.wonderkiln.blurkit.BlurLayout>-->
 
-        <Button
-            android:id="@+id/my_cancel_button"
-            style="?attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:text="cancel" />
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:text="Some text on blurred background"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp" />
 
-    </LinearLayout>
+    <Button
+        android:layout_below="@+id/text_view"
+        android:id="@+id/my_cancel_button"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="cancel" />
 
 </RelativeLayout>

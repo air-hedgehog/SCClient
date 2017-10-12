@@ -9,8 +9,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.akimchenko.antony.scclient.MainActivity
 import com.akimchenko.antony.scclient.R
-import jp.wasabeef.blurry.Blurry
+import dialogs.TransparentDialog
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import kotlinx.android.synthetic.main.item_random.view.*
 import java.util.*
@@ -24,7 +25,7 @@ class MainFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view: View = inflater!!.inflate(R.layout.fragment_main, null)
         setRecycler(view.fragment_main_recycler)
-        Blurry.with(activity).radius(5).sampling(10).onto(view.toolbar)
+
         return view
     }
 
@@ -56,14 +57,14 @@ class MainFragment : Fragment() {
 
         class RandomViewHolder(context: Context, itemView: View?, val items: ArrayList<ListItem>) : ViewHolder(itemView) {
 
-            /*init {
+            init {
                 itemView?.setOnClickListener({
                     val transparentDialog = TransparentDialog()
                     //transparentDialog.dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                     transparentDialog.show((context as MainActivity).fragmentManager, transparentDialog.tag)
                 })
             }
-*/
+
             override fun updateUI(position: Int) {
                 itemView.item_text_view.text = items[position].getTitle()
                 itemView.setBackgroundColor(items[position].getBackgroundColor()!!)
